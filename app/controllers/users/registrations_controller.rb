@@ -13,14 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  def edit
-    # super
-    self.resource.seeker_profiles.build
-    self.resource.education_details.build
-    self.resource.experience_details.build
-    self.resource.seeker_skill_sets.build
-    respond_with self.resource
-  end
+  # def edit
+  #   # super
+  # end
 
   # PUT /resource
   # def update
@@ -63,21 +58,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  private
-
-  def sign_up_params
-    allow = [:user_type_id, :date_of_birth, :gender,
-             :is_active, :contact_number,
-             :sms_notification_active,
-             :email_notification_active,:email, :password, :password_confirmation, seeker_profiles_attributes:[:first_name, :last_name, :current_salary, :is_annualy_monthly, :currency],
-             education_details_attributes: [:cerficate_degree_name,
-                                            :major,:institute_university_name,:starting_date,
-                                            :percentage, :grade],
-             experience_details_attributes:[:is_current_job,
-                                            :start_date, :end_date, :job_title, :company_name,
-                                            :job_location_city, :job_location_state, :job_location_country,
-                                            :description],
-             seeker_skill_sets_attributes: [:skill_set_id, :skill_level]]
-    params.require(resource_name).permit(allow)
-  end
+  # private
+  #
+  # def sign_up_params
+  #   allow = [:user_type_id, :date_of_birth, :gender,
+  #            :is_active, :contact_number,
+  #            :sms_notification_active,
+  #            :email_notification_active,:email, :password, :password_confirmation, seeker_profiles_attributes:[:first_name, :last_name, :current_salary, :is_annualy_monthly, :currency],
+  #            education_details_attributes: [:cerficate_degree_name,
+  #                                           :major,:institute_university_name,:starting_date,
+  #                                           :percentage, :grade],
+  #            experience_details_attributes:[:is_current_job,
+  #                                           :start_date, :end_date, :job_title, :company_name,
+  #                                           :job_location_city, :job_location_state, :job_location_country,
+  #                                           :description],
+  #            seeker_skill_sets_attributes: [:skill_set_id, :skill_level]]
+  #   params.require(resource_name).permit(allow)
+  # end
 end
