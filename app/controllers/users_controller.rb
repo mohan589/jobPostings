@@ -2,10 +2,19 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def profile
-    current_user.seeker_profiles
-    current_user.education_details
-    current_user.experience_details
-    current_user.seeker_skill_sets
+    if current_user.seeker_profiles.count > 0 && current_user.education_details.count > 0 &&
+        current_user.experience_details.count > 0 && current_user.seeker_skill_sets.count > 0
+      current_user.seeker_profiles
+      current_user.education_details
+      current_user.experience_details
+      current_user.seeker_skill_sets
+    else
+      current_user.seeker_profiles.build
+      current_user.education_details.build
+      current_user.experience_details.build
+      current_user.seeker_skill_sets.build
+    end
+
   end
 
   def update_profile
