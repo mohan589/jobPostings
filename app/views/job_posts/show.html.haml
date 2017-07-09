@@ -1,1 +1,31 @@
-= render 'side_panel'
+.col-lg-9
+  .panel.panel-default
+    .panel-body
+      .col-lg-12.no-padding
+        .col-lg-12.no-padding
+          %b= @job_post.job_title.blank? ? 'Test' : @job_post.job_title
+        .col-lg-12.no-padding
+          = link_to @job_post.company.name, @job_post.company.website_url
+        .col-lg-3.no-padding.fa.fa-suitcase
+          %span= "test"
+        .col-lg-3.no-padding.fa.fa-location-arrow
+          = link_to @job_post.job_location.city, root_path, title: "Web Developer Jobs in  #{@job_post.job_location.city}"
+        .col-lg-12.no-padding
+          %br
+            %p
+              = link_to 'Apply', '', class: 'btn btn-sm btn-primary'
+    .panel-footer
+      .col-lg-3.no-padding.fa.fa-inr
+        %span.fa.fa-heart.pull-left
+        = "job.salary.strip"
+      .col-lg-3.no-padding.glyphicon.glyphicon-user
+        PostedBy
+      .col-lg-3.no-padding
+        Test
+      .col-lg-3.no-padding
+        = time_ago_in_words(@job_post.created_at) + ' ago'
+  .panel.panel-default
+    .panel-body
+      .col-lg-12.no-padding
+        %p Job Description
+        = @job_post.job_description
