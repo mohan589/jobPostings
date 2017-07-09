@@ -13,10 +13,14 @@ class JobPostsController < ApplicationController
   end
 
   def apply
-    if JobPostActivity.new_activity(@job_post, current_user)
-      puts 'done'
+    if current_user.present?
+      if JobPostActivity.new_activity(@job_post, current_user)
+        puts 'done'
+      else
+        render @job_post, notice: @job_post.errors
+      end
     else
-      render @job_post, notice: @job_post.errors
+      redirect_to new_user_session_path, notice: 'You need to SignIn before apply for the Job'
     end
   end
 
