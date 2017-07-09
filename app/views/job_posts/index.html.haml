@@ -1,2 +1,63 @@
-%h1 JobPosts#index
-%p Find me in app/views/job_posts/index.html.haml
+.col-lg-3.col-lg-offset-1
+  .panel.panel-default
+    .panel-body
+      .col-lg-12
+        Find Jobs For
+      .col-lg-12
+        %hr
+          Testing
+      .col-lg-12
+        %hr
+          Skills
+  .panel.panel-default
+    .panel-body
+      .col-lg-12
+        Refine Results
+      .col-lg-12
+        %hr
+          Freshness
+      .col-lg-12
+        %hr
+          .dropdown
+            %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+              Dropdown
+              %span.caret
+            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+              %li
+                %a{:href => "#"} Action
+              %li
+                %a{:href => "#"} Another action
+              %li
+                %a{:href => "#"} Something else here
+              %li.divider{:role => "separator"}
+              %li
+                %a{:href => "#"} Separated link
+      .col-lg-12
+        %hr
+          .dropdown
+            %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+              Dropdown
+              %span.caret
+            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+              %li
+                %a{:href => "#"} Action
+              %li
+                %a{:href => "#"} Another action
+              %li
+                %a{:href => "#"} Something else here
+              %li.divider{:role => "separator"}
+              %li
+                %a{:href => "#"} Separated link
+
+-if job_posts.blank?
+  .col-lg-6
+    = 'No Jobs found'
+    = link_to "Add New Job", new_job_post_path, class: 'btn btn-default'
+- else
+  .col-lg-6
+    - job_posts.each do |job|
+      = render partial: 'job', locals: {job: job}
+.row
+  .col-lg-3
+    = link_to "Add New Job", new_job_post_path, class: 'btn btn-default'
+    = link_to "Back", root_path, class: 'btn btn-default'

@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-
+  resources :homes
   resources :job_posts
   resources :business_streams
   resources :job_types
   resources :companies
   resources :user_types
-  root to: 'homes#index'
+  root to: 'job_posts#index'
 end

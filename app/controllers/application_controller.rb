@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
 
+  expose :job_posts, ->{ JobPost.all.order('created_at DESC') }
+
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_type_id, :date_of_birth, :gender,
                                                        :is_active, :contact_number,

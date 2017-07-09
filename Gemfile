@@ -8,6 +8,7 @@ end
 ruby '2.4.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'bootswatch-rails'
+gem 'decent_exposure', '3.0.0'
 gem 'rails', '~> 5.0.4'
 gem 'haml-rails', '~> 0.9'
 gem 'pry'
