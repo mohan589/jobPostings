@@ -5,15 +5,15 @@
         .col-lg-12.no-padding
           %b= @job_post.job_title.blank? ? 'Test' : @job_post.job_title
         .col-lg-12.no-padding
-          = link_to @job_post.company.name, @job_post.company.website_url
+          = link_to @job_post.name, @job_post.website_url
         .col-lg-3.no-padding.fa.fa-suitcase
           %span= "test"
         .col-lg-3.no-padding.fa.fa-location-arrow
-          = link_to @job_post.job_location.city, root_path, title: "Web Developer Jobs in  #{@job_post.job_location.city}"
+          = link_to @job_post.city, root_path, title: "Web Developer Jobs in  #{@job_post.city}"
         .col-lg-12.no-padding
           %br
             %p
-              - if @job_post.activities.first && @job_post.user_id == current_user.id
+              - if @job_post.activities.first && is_post_user_current_user_same(@job_post)
                 %p.fa.fa-check= "You already applied this job on #{@job_post.activities.first.apply_date.strftime("%e %b")}"
               - else
                 = link_to "Apply", apply_job_post_path(@job_post.id), method: :post, class: 'btn btn-sm btn-primary'
