@@ -1,0 +1,16 @@
+%p
+  %b Company Name:
+  = @company.name
+%p
+  %b Profile Description:
+  = @company.profile_description
+%p
+  %b Business Stream:
+  = @company.stream.name
+%p
+  %b Website Url:
+  = link_to @company.name, @company.website_url
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path

@@ -1,0 +1,43 @@
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, required: true, autofocus: true
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %p
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
+    = f.input :password_confirmation, required: false
+    = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+    = f.simple_fields_for :seeker_profiles do |a|
+      = a.input :first_name
+      = a.input :last_name
+      = a.input :current_salary
+      = a.input :is_annualy_monthly
+      = a.input :currency
+    = f.simple_fields_for :education_details do |e|
+      = e.input :cerficate_degree_name
+      = e.input :major
+      = e.input :institute_university_name
+      = e.input :starting_date
+      = e.input :percentage
+      = e.input :grade
+    = f.simple_fields_for :experience_details do |e|
+      = e.input :is_current_job
+      = e.input :start_date
+      = e.input :end_date
+      = e.input :job_title
+      = e.input :company_name
+      = e.input :job_location_city
+      = e.input :job_location_state
+      = e.input :job_location_country, :as => :string
+      = e.input :description
+    = f.simple_fields_for :seeker_skill_sets do |e|
+      = e.input :skill_set_id, collection: SkillSet.all.map{|s| [s.skill_set_name, s.id]}
+      = e.input :skill_level
+
+  .form-actions
+    = f.button :submit, "Update"
+%h3 Cancel my account
+%p
+  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+= link_to "Back", :back

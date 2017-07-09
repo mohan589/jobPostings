@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  cerficate_degree_name: MyString
+  major: MyString
+  institute_university_name: MyString
+  starting_date: 2017-07-08
+  completion: 2017-07-08
+  percentage: 
+  grade: 
+
+two:
+  user_id: 1
+  cerficate_degree_name: MyString
+  major: MyString
+  institute_university_name: MyString
+  starting_date: 2017-07-08
+  completion: 2017-07-08
+  percentage: 
+  grade: 

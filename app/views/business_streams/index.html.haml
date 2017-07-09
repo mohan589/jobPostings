@@ -1,0 +1,18 @@
+%h1 Listing business_streams
+
+%table
+  %thead
+    %tr
+      %th Name
+
+  %tbody
+    - @business_streams.each do |business_stream|
+      %tr
+        %td= business_stream.name
+        %td= link_to 'Show', business_stream
+        %td= link_to 'Edit', edit_business_stream_path(business_stream)
+        %td= link_to 'Destroy', business_stream, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Business stream', new_business_stream_path

@@ -1,0 +1,26 @@
+%h1 Listing companies
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th ProfileDescription
+      %th BusinessStream
+      %th Website Url
+      %th
+
+  %tbody
+    - @companies.each do |company|
+      %tr
+        %td= company.name
+        %td= company.profile_description
+        %td= company.business_stream_id
+        %td= company.website_url
+
+        %td= link_to 'Show', company
+        %td= link_to 'Edit', edit_company_path(company)
+        %td= link_to 'Destroy', company, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Company', new_company_path

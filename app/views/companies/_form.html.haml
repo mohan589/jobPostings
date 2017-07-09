@@ -1,0 +1,11 @@
+= simple_form_for(@company) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :profile_description
+    = f.input :business_stream_id, collection: BusinessStream.all.map{|b| [b.name, b.id]}, as: :select
+    = f.input :website_url
+
+  .form-actions
+    = f.button :submit

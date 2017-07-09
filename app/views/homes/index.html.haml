@@ -1,0 +1,21 @@
+- if !user_signed_in?
+  .col-lg-6.col-lg-offset-6
+    .panel.panel-default
+      .panel-body
+        %ul.nav.nav-tabs{:role => "tablist"}
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#home", :role => "tab"}
+              %icon.fa.fa-home
+              Job Seeker
+          %li
+            %a{"data-toggle" => "tab", :href => "#profile", :role => "tab"}
+              %i.fa.fa-user
+              Recruiter
+        / Tab panes
+        .tab-content
+          #home.tab-pane.fade.active.in
+            - user_resource.user_type_id = 1
+            = render 'users/registrations/new', locale: {user_resource: user_resource}
+          #profile.tab-pane.fade
+            - user_resource.user_type_id = 2
+            = render 'users/registrations/new', locale: {user_resource: user_resource}

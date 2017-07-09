@@ -1,0 +1,46 @@
+.col-lg-6.col-lg-offset-3
+  .panel.panel-default
+    .panel-body
+      = simple_form_for(current_user, as: resource_name, url: update_profile_users_path(resource_name), html: { method: :put }) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :user_type_id, collection: UserType.all.map{|u| [u.name, u.id]}, include_blank: true
+          = f.input :date_of_birth
+          = f.input :gender
+          = f.input :is_active
+          = f.input :contact_number
+          = f.input :sms_notification_active
+          = f.input :email_notification_active
+        .form-inputs
+          = f.simple_fields_for :seeker_profiles do |sp|
+            = render partial: 'seeker_profiles/form', locals: { sp: sp}
+          = f.simple_fields_for :education_details do |ed|
+            = ed.input :cerficate_degree_name
+            = ed.input :major
+            = ed.input :institute_university_name
+            = ed.input :starting_date
+            = ed.input :percentage
+            = ed.input :grade
+            = ed.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+          = f.simple_fields_for :experience_details do |eds|
+            = eds.input :is_current_job
+            = eds.input :start_date
+            = eds.input :end_date
+            = eds.input :job_title
+            = eds.input :company_name
+            = eds.input :job_location_city
+            = eds.input :job_location_state
+            = eds.input :job_location_country, :as => :string
+            = eds.input :description
+            = eds.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+          = f.simple_fields_for :seeker_skill_sets do |e|
+            = e.input :skill_set_id, collection: SkillSet.all.map{|s| [s.skill_set_name, s.id]}
+            = e.input :skill_level
+            = e.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+
+        .form-actions
+          = f.button :submit, "Update"
+      %h3 Cancel my account
+      %p
+        Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+      = link_to "Back", :back

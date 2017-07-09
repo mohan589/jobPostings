@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Skill set name:
+  = @skill_set.skill_set_name
+
+= link_to 'Edit', edit_skill_set_path(@skill_set)
+\|
+= link_to 'Back', skill_sets_path

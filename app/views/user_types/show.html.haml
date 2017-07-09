@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @user_type.name
+
+= link_to 'Edit', edit_user_type_path(@user_type)
+\|
+= link_to 'Back', user_types_path
