@@ -27,6 +27,11 @@ class JobPostsController < ApplicationController
   end
 
   def update
+    if @job_post.update_attributes(job_post_params)
+      redirect_to @job_post, notice: 'JobPost updated successfully'
+    else
+      render 'edit', notice: @job_post.errors
+    end
   end
 
   def destroy
@@ -39,7 +44,7 @@ class JobPostsController < ApplicationController
   end
 
   def job_post_params
-    params.require(:job_post).permit(:user_id, :job_type_id, :company_id,
+    params.require(:job_post).permit(:job_title, :user_id, :job_type_id, :company_id,
                                      :is_company_name_hidden, :job_description, :job_location_id,
     :is_active, job_location_attributes:[:id, :street_address, :city, :state, :country, :zip])
   end

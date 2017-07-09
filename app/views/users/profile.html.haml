@@ -4,7 +4,7 @@
       = simple_form_for(current_user, as: resource_name, url: update_profile_users_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :user_type_id, collection: UserType.all.map{|u| [u.name, u.id]}, include_blank: true
+          -#= f.input :user_type_id, collection: UserType.all.map{|u| [u.name, u.id]}, include_blank: true
           = f.input :date_of_birth
           = f.input :gender
           = f.input :is_active

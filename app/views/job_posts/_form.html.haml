@@ -1,9 +1,10 @@
 .col-lg-6.col-lg-offset-3
   .panel.panel-default
     .panel-body
-      = simple_form_for(@job_post, url: job_posts_path(@job_post), html: { method: :post }) do |f|
+      = simple_form_for(@job_post) do |f|
         = f.error_notification
         .form-inputs
+          = f.input :job_title
           = f.input :job_type_id, collection: JobType.all.map{|u| [u.job_type_name, u.id]}, include_blank: true
           = f.input :company_id, collection: Company.all.map{|u| [u.name, u.id]}, include_blank: true
           = f.input :is_company_name_hidden

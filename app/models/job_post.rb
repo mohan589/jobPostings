@@ -1,5 +1,6 @@
 class JobPost < ApplicationRecord
   validates :user_id, :presence => true
+  validates :job_title, :presence => true
 
   belongs_to :job_type
   belongs_to :job_location
