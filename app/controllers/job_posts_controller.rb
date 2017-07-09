@@ -1,4 +1,6 @@
 class JobPostsController < ApplicationController
+  before_action :set_job_post, only: [:edit, :show, :update, :destroy]
+
   def index
   end
 
@@ -31,6 +33,11 @@ class JobPostsController < ApplicationController
   end
 
   private
+
+  def set_job_post
+    @job_post = JobPost.find(params[:id])
+  end
+
   def job_post_params
     params.require(:job_post).permit(:user_id, :job_type_id, :company_id,
                                      :is_company_name_hidden, :job_description, :job_location_id,

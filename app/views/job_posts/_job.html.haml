@@ -2,7 +2,13 @@
   .panel-body
     .col-lg-12.no-padding
       .col-lg-12.no-padding
-        %b= link_to job.job_description, ""
+        - if user_signed_in?
+          - if job.user_id == current_user&.id
+            %b= link_to job.job_description, edit_job_post_path(job)
+          - else
+            %b= link_to job.job_description, job_post_path(job)
+        - else
+          %b= link_to job.job_description, job_post_path(job)
       .col-lg-12.no-padding
         .label.label-default= "test"
       .col-lg-3.no-padding.fa.fa-suitcase

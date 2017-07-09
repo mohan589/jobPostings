@@ -46,16 +46,16 @@
           -#    %input.form-control{:placeholder => "Search", :type => "text"}/
           -#  %button.btn.btn-default{:type => "submit"} Submit
           %ul.nav.navbar-nav.navbar-right
-            %li
-              - if user_signed_in?
+            - if user_signed_in?
+              %li
                 = link_to 'Sign Out', destroy_user_session_path, method: :delete
-              - else
+            - else
+              %li
                 = link_to 'Sign In', new_user_session_path
-            %li
-              = link_to 'Sign Up', homes_path
+              %li
+                = link_to 'Sign Up', homes_path
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
-
               %li.dropdown
                 %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                   = current_user.email
