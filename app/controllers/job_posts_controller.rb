@@ -1,5 +1,5 @@
 class JobPostsController < ApplicationController
-  before_action :set_job_post, only: [:edit, :show, :update, :destroy]
+  before_action :set_job_post, only: [:edit, :show, :update, :destroy, :apply]
 
   def index
   end
@@ -10,6 +10,14 @@ class JobPostsController < ApplicationController
   def new
     @job_post = JobPost.new
     @job_post.build_job_location
+  end
+
+  def apply
+    if JobPostActivity.new_activity(@job_post, current_user)
+      puts 'done'
+    else
+      render @job_post, notice: @job_post.errors
+    end
   end
 
   def edit

@@ -13,7 +13,10 @@
         .col-lg-12.no-padding
           %br
             %p
-              = link_to 'Apply', '', class: 'btn btn-sm btn-primary'
+              - if @job_post.activities.first && @job_post.user_id == current_user.id
+                %p.fa.fa-check= "You already applied this job on #{@job_post.activities.first.apply_date.strftime("%e %b")}"
+              - else
+                = link_to "Apply", apply_job_post_path(@job_post.id), method: :post, class: 'btn btn-sm btn-primary'
     .panel-footer
       .col-lg-3.no-padding.fa.fa-inr
         %span.fa.fa-heart.pull-left

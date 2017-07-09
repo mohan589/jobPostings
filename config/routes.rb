@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   end
 
   resources :homes
-  resources :job_posts
+  resources :job_posts do
+    member do
+      post 'apply'
+    end
+  end
   resources :business_streams
   resources :job_types
   resources :companies
