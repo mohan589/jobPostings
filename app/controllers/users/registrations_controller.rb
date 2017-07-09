@@ -66,7 +66,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    binding.pry
     allow = [:user_type_id, :date_of_birth, :gender,
              :is_active, :contact_number,
              :sms_notification_active,
