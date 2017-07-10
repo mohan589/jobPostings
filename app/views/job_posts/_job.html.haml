@@ -15,10 +15,15 @@
         %span= "#{job.exp_required} Years"
       .col-lg-3.no-padding.fa.fa-location-arrow
         = job.city
+    .col-lg-3.no-padding
+      Key Skills:
+    .col-lg-3.no-padding
+      = binding.pry
+      = job.skill_sets.skill_set_name  
   .panel-footer
     .col-lg-3.no-padding.fa.fa-inr
       %span.fa.fa-heart.pull-left
-      = "job.salary.strip"
+      = job.salary
     .col-lg-3.no-padding.glyphicon.glyphicon-user
       PostedBy
     .col-lg-3.no-padding

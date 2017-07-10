@@ -11,6 +11,8 @@
           = f.input :job_description
           = f.input :is_active
           = f.input :exp_required
+          = f.input :key_skills, collection: SkillSet.all.map{|s| [s.skill_set_name, s.id]}, input_html: { multiple: true }
+          = f.input :salary
           = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
         .form-inputs
           = f.simple_fields_for :job_location do |sp|
