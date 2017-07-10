@@ -7,7 +7,7 @@
         .col-lg-12.no-padding
           = link_to @job_post.name, @job_post.website_url
         .col-lg-3.no-padding.fa.fa-suitcase
-          %span= "test"
+          %span= "#{@job_post.exp_required} Years"
         .col-lg-3.no-padding.fa.fa-location-arrow
           = link_to @job_post.city, root_path, title: "Web Developer Jobs in  #{@job_post.city}"
         .col-lg-12.no-padding

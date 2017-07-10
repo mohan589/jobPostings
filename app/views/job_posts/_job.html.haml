@@ -10,11 +10,11 @@
         - else
           %b= link_to job.job_title, job_post_path(job)
       .col-lg-12.no-padding
-        .label.label-default= "test"
+        .label.label-default= "#{job.job_title} years"
       .col-lg-3.no-padding.fa.fa-suitcase
-        %span= "test"
+        %span= "#{job.exp_required} Years"
       .col-lg-3.no-padding.fa.fa-location-arrow
-        = "job.location"
+        = job.city
   .panel-footer
     .col-lg-3.no-padding.fa.fa-inr
       %span.fa.fa-heart.pull-left
