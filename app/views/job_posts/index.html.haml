@@ -2,13 +2,12 @@
 -if job_posts.blank?
   .col-lg-6
     = 'No Jobs found'
-    = link_to "Add New Job", new_job_post_path, class: 'btn btn-default'
 - else
   .col-lg-6
     - job_posts.each do |job|
       = render partial: 'job', locals: {job: job}
 .row
   .col-lg-3
-    - if current_user&.user_type_id == 2
+    - if if_current_user_is_recruiter
       = link_to "Add New Job", new_job_post_path, class: 'btn btn-default'
       = link_to "Back", root_path, class: 'btn btn-default'
