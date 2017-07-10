@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 20170710142807) do
     t.datetime "updated_at",             null: false
     t.string   "job_title"
     t.string   "exp_required"
+    t.string   "salary"
+    t.string   "key_skills"
   end
 
   create_table "job_types", force: :cascade do |t|
